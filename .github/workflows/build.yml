@@ -1,8 +1,9 @@
 name: App Builder
 on:
   push:
-    branches:
-      - release
+    tags:
+      - "v*"
+  workflow_dispatch:
       
 jobs:
   release:
