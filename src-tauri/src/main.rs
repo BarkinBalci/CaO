@@ -6,18 +6,18 @@
 
 
 mod calculator;
+use crate::calculator::Calculator;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn calculate(input: &str) -> String {
-    let tokens = calculator::Calculator::parse(input);
-    println!("{:?}", tokens);
-    let expr = calculator::Calculator::expression(tokens.unwrap());
-    println!("{:?}", expr);
-    let value = calculator::Calculator::evaluate(expr);
-    println!("{}", value.unwrap());
-
-    format!("Result: {}", value.unwrap())
+    let tokens = Calculator::parse(input);
+    let expr = Calculator::expression(tokens.unwrap());
+    let value = Calculator::evaluate(expr);
+    match value{
+        None => format!(""),
+        Some(..) => format!("{}", value.unwrap()),
+    }
 }
 
 fn main() {

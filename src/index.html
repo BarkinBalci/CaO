@@ -6,32 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tauri App</title>
     <script type="module" src="/main.js" defer></script>
+    <script type="application/javascript" src="/numpad.js" defer></script>
     <style>
       .logo.vanilla:hover {
         filter: drop-shadow(0 0 2em #ffe21c);
       }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+  
+        input[type="text"] {
+            padding: 20px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
     </style>
   </head>
 
   <body>
-    <div class="container">
-      <h1>Welcome to CaO 😎🤙</h1>
+    <table id="calculator">
+        <tr>
+            <td colspan="4"><input type="text" id="calculate-input" placeholder="Enter an equation..."></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="(" onclick="display(value)" > </td>
+          <td><input type="button" value=")" onclick="display(value)" > </td>
+          <td><input type="button" value="<" onclick="del()" > </td>
+          <td><input type="button" value="c" onclick="clr()" > </td>
 
-      <div class="row">
-        <a href="https://github.com/BarkinBalci/CaO" target="_blank">
-          <img src="/assets/github.svg" class="logo GitHub" alt="GitHub logo" />
-        </a>
-      </div>
+      </tr>
 
-      <p>Click on the GitHub logo to see our repository</p>
+        <tr>        
+            <td><input type="button" value="7" onclick="display(value)" > </td>
+            <td><input type="button" value="8" onclick="display(value)" > </td>
+            <td><input type="button" value="9" onclick="display('9')" > </td>
+            <td><input type="button" value="*" onclick="display(' * ')" > </td>
 
-      <div class="row">
-        <div>
-          <input id="calculate-input" placeholder="Enter an equation..." />
-          <button id="calculate-button" type="button">Calculate</button>
-        </div>
-      </div>
-      <p id="result-msg"></p>
-    </div>
+
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="display('4')" > </td>
+            <td><input type="button" value="5" onclick="display('5')" > </td>
+            <td><input type="button" value="6" onclick="display('6')" > </td>
+            <td><input type="button" value="-" onclick="display(' - ')" > </td>
+
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="display('1')" > </td>
+            <td><input type="button" value="2" onclick="display('2')" > </td>
+            <td><input type="button" value="3" onclick="display('3')" > </td>
+            <td><input type="button" value="+" onclick="display(' + ')"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="." onclick="display('.')" > </td>
+            <td><input type="button" value="0" onclick="display('0')" > </td>
+            <td><input type="button" value="/" onclick="display(' / ')" > </td>
+            <td><input id="calculate-button" value="=" type="button"></td>
+
+        </tr>
+    </table>
   </body>
 </html>
